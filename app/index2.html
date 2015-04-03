@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="TabsApp">
+<head>
+    <title>Angular Material - Starter App</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="./bower_components/angular-material/angular-material.min.js"></script>
+    <script src="src/tabs/Tabs.js"></script>
+    <script src="src/tabs/TabsService.js"></script>
+    <script src="src/tabs/login/login.js"></script>
+    <script src="src/tabs/financial/financial.js"></script>
+    <script src="src/tabs/TabsController.js"></script>
+</head>
+<body ng-controller="TabsController as tc" layout="column">
+<md-toolbar layout="row">
+    <md-button class="menu" ng-click="tc.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <h1>MobMaiden</h1>
+</md-toolbar>
+<div flex layout="row">
+    <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+        <md-list>
+            <md-item ng-repeat="tab in tab_list">
+                <md-button ng-click="tab.url()">
+                    <p>{{tab.name_provider()}}</p>
+                </md-button>
+            </md-item>
+        </md-list>
+
+
+    </md-sidenav>
+    <md-content flex id="content">
+        <div ng-view></div>
+    </md-content>
+</div>
+</body>
+</html>

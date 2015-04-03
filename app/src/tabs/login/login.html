@@ -1,0 +1,16 @@
+<div ng-controller="LoginController" layout="row">
+    <md-content class="md-padding" layout-gt-md="row" layout-="column">
+        <md-input-container>
+            <label>Username</label>
+            <input ng-model="username">
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input ng-model="passwd" type="password">
+        </md-input-container>
+        <md-button ng-click="submit_auth()" class="md-primary" layout-gt-md="row" layout-md="column">
+            <p>Login&nbsp;</p>
+            <md-icon md-svg-src="./assets/svg/Log-in.svg"></md-icon>
+        </md-button>
+    </md-content>
+</div>

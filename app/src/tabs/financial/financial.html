@@ -1,0 +1,52 @@
+<div ng-controller="FinancialController" layout="row">
+    <md-tabs md-selected="selectedIndex" md-border-bottom>
+        <md-tab label="Banking Info">
+            <md-content class="md-padding" layout="column">
+                <md-input-container>
+                    <label>Bank name</label>
+                    <input ng-model="bank_name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Routing number</label>
+                    <input ng-model="routing_number">
+                </md-input-container>
+                <md-input-container>
+                    <label>Account user's name</label>
+                    <input ng-model="acct_user">
+                </md-input-container>
+                <md-input-container>
+                    <label>Account number</label>
+                    <input ng-model="acct_number">
+                </md-input-container>
+                <div>
+                    <md-button ng-click="submit_bank_info()" class="md-primary" layout="column">
+                        <p>Update</p>
+                        <md-icon md-svg-src="./assets/svg/dollar.svg"></md-icon>
+                    </md-button>
+                </div>
+            </md-content>
+        </md-tab>
+        <md-tab label="Credit card Info">
+            <md-content class="md-padding" layout="column">
+                <md-select ng-model="card_type" ng-required="true" placeholder="Card Type">
+                    <md-option ng-repeat="card in card_types" value="{{card.code}}">{{card.description}}</md-option>
+                </md-select>
+
+                <md-input-container>
+                    <label>Account user's name</label>
+                    <input ng-model="credit_card_user">
+                </md-input-container>
+                <md-input-container>
+                    <label>Account number</label>
+                    <input ng-model="credit_card_number">
+                </md-input-container>
+                <div>
+                    <md-button ng-click="submit_credit_card_info()" class="md-primary" layout="column">
+                        <p>Update&nbsp;</p>
+                        <md-icon md-svg-src="./assets/svg/dollar.svg"></md-icon>
+                    </md-button>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</div>
