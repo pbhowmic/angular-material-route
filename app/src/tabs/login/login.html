@@ -1,16 +1,21 @@
 <div ng-controller="LoginController" layout="row">
-    <md-content class="md-padding" layout-gt-md="row" layout-="column">
-        <md-input-container>
-            <label>Username</label>
-            <input ng-model="username">
-        </md-input-container>
-        <md-input-container>
-            <label>Password</label>
-            <input ng-model="passwd" type="password">
-        </md-input-container>
-        <md-button ng-click="submit_auth()" class="md-primary" layout-gt-md="row" layout-md="column">
-            <p>Login&nbsp;</p>
-            <md-icon md-svg-src="./assets/svg/Log-in.svg"></md-icon>
-        </md-button>
+    <md-content class="md-padding" layout="column">
+        <form name="loginForm">
+            <md-input-container>
+                <label>Username</label>
+                <input ng-model="logindata.username" type="text" ng-pattern="/^[a-zA-Z0-9]+$/" ng-required="true"
+                       ng-minlength="6" ng-maxlength="32" name="username">
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input ng-model="logindata.password" type="password" name="password" ng-required="true"
+                       ng-pattern="/^[ a-zA-Z0-9\$\\@_#]+$/" ng-minlength="6" ng-maxlength="32">
+            </md-input-container>
+            <md-button ng-click="submit_auth(loginForm.$valid)" class="md-primary" layout-gt-md="row" layout-md="column"
+                       ng-disabled="!loginForm.$valid">
+                <p>Login&nbsp;</p>
+                <md-icon md-svg-src="./assets/svg/Log-in.svg"></md-icon>
+            </md-button>
+        </form>
     </md-content>
 </div>
