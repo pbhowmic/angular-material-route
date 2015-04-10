@@ -18,17 +18,17 @@
                 return hst;
             }
         })
-        .controller('TabsController', ['$scope', '$route', '$routeParams', '$location', 'tab_attributes',
-            function ($scope, $route, $routeParams, $location, tab_attributes) {
+        .controller('TabsController', ['$scope', '$route', '$routeParams', '$location', '$mdSidenav', 'tab_attributes',
+            function ($scope, $route, $routeParams, $location, $mdSidenav, tab_attributes) {
                 $scope.route = $route;
                 $scope.routeParams = $routeParams;
                 $scope.location = $location;
                 $scope.toggleList = function () {
-                    //TODO
+                    $mdSidenav('left').toggle();
                 };
                 $scope.tab_list = tab_attributes.tabs();
                 $scope.logged_in_status2 = function () {
-                    return tab_attributes.login_status()
+                    return tab_attributes.login_status();
                 };
 
             }]);

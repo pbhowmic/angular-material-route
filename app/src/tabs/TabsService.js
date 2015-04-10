@@ -13,12 +13,7 @@
                     if (key != undefined) {
                         x[key] = val;
                     }
-                    /**
-                     console.log(key);
-                     console.log(x);
-                     console.log("Message ct = " + msgCt++);
-                     */
-                    return x;
+                   return x;
                 },
                 login_status: function (status) {
                     if (status == undefined) {

@@ -30,7 +30,6 @@
             });
         }).run(['$location', 'tab_attributes', function ($location, tab_attributes) {
             tab_attributes.tabs(ctrlname, {
-                _state: '',
                 name_provider: function () {
                     return (tab_attributes.login_status()[0]) ? 'Sign out' : 'Sign in/Sign up';
                 },
