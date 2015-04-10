@@ -25,7 +25,7 @@
 </head>
 <body ng-controller="TabsController as tc" layout="column">
 <md-toolbar layout="row">
-    <md-button class="menu" ng-click="tc.toggleList()" aria-label="Show User List">
+    <md-button class="menu" ng-click="toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
     <h1>MobMaiden</h1>
@@ -33,14 +33,12 @@
 <div flex layout="row">
     <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
         <md-list>
-            <md-item ng-repeat="tab in tab_list">
+            <md-item ng-repeat="tab in tab_list|logged_in_status:logged_in_status2()[0]">
                 <md-button ng-click="tab.url()">
                     <p>{{tab.name_provider()}}</p>
                 </md-button>
             </md-item>
         </md-list>
-
-
     </md-sidenav>
     <md-content flex id="content">
         <div ng-view></div>

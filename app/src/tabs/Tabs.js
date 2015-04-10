@@ -13,6 +13,4 @@
             $mdIconProvider.icon('menu', './assets/svg/menu.svg');
 
         });
-
-
 })();
