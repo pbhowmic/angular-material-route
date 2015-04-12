@@ -6,16 +6,22 @@
     angular.module('TabsApp.aux')
         .factory('tab_attributes', function () {
             var x = {};
-            var msgCt = 0;
+            var _login_status=[false];
+
             return {
                 tabs: function (key, val) {
                     if (key != undefined) {
                         x[key] = val;
                     }
-                    console.log(key);
-                    console.log(x);
-                    console.log("Message ct = " + msgCt++);
-                    return x;
+                   return x;
+                },
+                login_status: function (status) {
+                    if (status == undefined) {
+                        return _login_status;
+                    } else {
+                        _login_status[0] = status;
+                        return _login_status;
+                    }
                 }
             };
         });

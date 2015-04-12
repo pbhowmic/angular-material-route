@@ -5,17 +5,31 @@
     'use strict';
 
     angular.module('TabsApp')
-        .controller('TabsController', ['$scope', '$route', '$routeParams', '$location', 'tab_attributes',
-            function ($scope, $route, $routeParams, $location, tab_attributes) {
+        .filter('logged_in_status', function () {
+            return function (tabs_list, status) {
+                status = status || false;
+                var hst = [];
+                var keys = Object.keys(tabs_list);
+                for (var i = 0; i < keys.length; i++) {
+                    console.log(tabs_list[keys[i]]);
+                    if (tabs_list[keys[i]].logged_in(status))
+                        hst.push(tabs_list[keys[i]]);
+                }
+                return hst;
+            }
+        })
+        .controller('TabsController', ['$scope', '$route', '$routeParams', '$location', '$mdSidenav', 'tab_attributes',
+            function ($scope, $route, $routeParams, $location, $mdSidenav, tab_attributes) {
                 $scope.route = $route;
                 $scope.routeParams = $routeParams;
                 $scope.location = $location;
                 $scope.toggleList = function () {
-                    //TODO
+                    $mdSidenav('left').toggle();
                 };
                 $scope.tab_list = tab_attributes.tabs();
-                $scope.load_controller = function(tab) {
+                $scope.logged_in_status2 = function () {
+                    return tab_attributes.login_status();
+                };
 
-                }
             }]);
 })();

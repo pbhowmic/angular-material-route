@@ -57,6 +57,9 @@
                 url: function () {
                     $location.path(url_pattern);
                     return url_pattern;
+                },
+                logged_in: function (status) {
+                    return status;
                 }
             });
         }]);
