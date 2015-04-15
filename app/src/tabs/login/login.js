@@ -32,13 +32,15 @@
             });
         }).run(['$location', 'tab_attributes', function ($location, tab_attributes) {
             tab_attributes.tabs(ctrlname, {
-                _state: '',
                 name_provider: function () {
-                    return (this._state == 'logged_in') ? 'Sign out' : 'Sign in/Sign up';
+                    return (tab_attributes.login_status()[0]) ? 'Sign out' : 'Sign in/Sign up';
                 },
                 url: function () {
                     $location.path(url_pattern);
                     return url_pattern;
+                },
+                logged_in: function (status) {
+                    return true;
                 }
             });
         }]);
